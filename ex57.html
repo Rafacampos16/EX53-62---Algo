@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Média Ponderada</title>
+  <style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+  height: 83vh;
+  margin-top: 45px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 8px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+}
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .resultado {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .resultado .verde {
+    color: green;
+  }
+  
+  .resultado .vermelho {
+    color: red;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Exercício 57</h1>
+    <p>Crie uma aplicação que receba quatro notas de um aluno e imprima a média ponderada
+        destas notas, sabendo-se que os pesos são respectivamente 3, 5, 6 e 6.
+        Imprima também se o aluno está aprovado ou reprovado sabendo-se que para ser
+        aprovado a média deve ser maior que 6,00</p>
+    <form id="formulario">
+      <div class="input-group">
+        <label for="nota1">Nota 1:</label>
+        <input type="number" id="nota1" name="nota1" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota2">Nota 2:</label>
+        <input type="number" id="nota2" name="nota2" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota3">Nota 3:</label>
+        <input type="number" id="nota3" name="nota3" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota4">Nota 4:</label>
+        <input type="number" id="nota4" name="nota4" min="0" max="10">
+      </div>
+
+      <button type="button" onclick="calcularMedia()">Calcular Média</button>
+    </form>
+
+    <!-- Resultado da média e classificação -->
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    function calcularMedia() {
+  // Obtém as notas digitadas pelo usuário
+  let nota1 = parseFloat(document.getElementById("nota1").value);
+  let nota2 = parseFloat(document.getElementById("nota2").value);
+  let nota3 = parseFloat(document.getElementById("nota3").value);
+  let nota4 = parseFloat(document.getElementById("nota4").value);
+
+  // Verifica se as notas estão dentro do intervalo válido
+  if (nota1 < 0 || nota1 > 10 || isNaN(nota1)) {
+    document.getElementById("nota1").style.border = "1px solid red";
+    return;
+  } else {
+    document.getElementById("nota1").style.border = "1px solid #ccc";
+  }
+
+  if (nota2 < 0 || nota2 > 10 || isNaN(nota2)) {
+    document.getElementById("nota2").style.border = "1px solid red";
+    return;
+  } else {
+    document.getElementById("nota2").style.border = "1px solid #ccc";
+  }
+
+  if (nota3 < 0 || nota3 > 10 || isNaN(nota3)) {
+    document.getElementById("nota3").style.border = "1px solid red";
+    return;
+  } else {
+    document.getElementById("nota3").style.border = "1px solid #ccc";
+  }
+
+  if (nota4 < 0 || nota4 > 10 || isNaN(nota4)) {
+    document.getElementById("nota4").style.border = "1px solid red";
+    return;
+  } else {
+    document.getElementById("nota4").style.border = "1px solid #ccc";
+  }
+
+  // Calcula a média ponderada
+  let media = (nota1 * 3 + nota2 * 5 + nota3 * 6 + nota4 * 6) / 20;
+
+  // Determina a classificação do aluno
+  let classificacao;
+  if (media >= 6) {
+    classificacao = `<span class="verde">Aprovado</span>`;
+  } else {
+    classificacao = `<span class="vermelho">Reprovado</span>`;
+  }
+
+  // Exibe o resultado da média e classificação
+  let resultadoElement = document.getElementById("resultado");
+  resultadoElement.innerHTML = `Média Ponderada: ${media.toFixed(2)}<br>Classificação: ${classificacao}`;
+}
+  </script>
+</body>
+</html>

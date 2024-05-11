@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 56</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+  height: 65vh;
+  margin-top: 90px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 8px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.resultado {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.resultado .verde {
+  color: green;
+}
+
+.resultado .vermelho {
+  color: red;
+}
+
+.resultado .amarelo {
+  color: #ffcc00;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Exercício 56:</h1>
+    <p>Classificação de notas:
+        <br><br>Crie uma aplicação que receba duas notas e calcule a média aritmética. As notas não
+        podem ser menores que zero e maiores que 10, caso isso ocorra o formulário deve ficar
+        com a borda vermelha.
+        Depois exiba as notas conforme sua classificação (por exemplo, "aprovado se média >=7
+        [verde]", "reprovado se média < 5 [vermelho]", "recuperação em caso contrário
+        [amarelo]").
+        </p>
+    <form id="formulario">
+      <div class="input-group">
+        <label for="nota1">Nota 1:</label>
+        <input type="number" id="nota1" name="nota1" min="0" max="10">
+      </div>
+
+      <div class="input-group">
+        <label for="nota2">Nota 2:</label>
+        <input type="number" id="nota2" name="nota2" min="0" max="10">
+      </div>
+
+      <button type="button" onclick="calcularMedia()">Calcular Média</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    function calcularMedia() {
+
+  let nota1 = parseFloat(document.getElementById("nota1").value);
+  let nota2 = parseFloat(document.getElementById("nota2").value);
+
+
+  if (nota1 < 0 || nota1 > 10 || isNaN(nota1)) {
+    document.getElementById("nota1").style.border = "1px solid red";
+    return;
+  } else {
+    document.getElementById("nota1").style.border = "1px solid #ccc";
+  }
+
+  if (nota2 < 0 || nota2 > 10 || isNaN(nota2)) {
+    document.getElementById("nota2").style.border = "1px solid red";
+    return;
+  } else {
+    document.getElementById("nota2").style.border = "1px solid #ccc";
+  }
+
+  let media = (nota1 + nota2) / 2;
+
+  let classificacao;
+  if (media >= 7) {
+    classificacao = `<span class="verde">Aprovado</span>`;
+  } else if (media < 5) {
+    classificacao = `<span class="vermelho">Reprovado</span>`;
+  } else {
+    classificacao = `<span class="amarelo">Recuperação</span>`;
+  }
+
+  let resultadoElement = document.getElementById("resultado");
+  resultadoElement.innerHTML = `A média do aluno é ${media.toFixed(2)}<br>Classificação: ${classificacao}`;
+}
+  </script>
+</body>
+</html>

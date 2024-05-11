@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 53:</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+  height: 45vh;
+  margin-top: 150px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 8px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.resultado {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.resultado .verde {
+  color: #4caf50;
+}
+
+.resultado .vermelho {
+  color: #f44336;
+}
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Exercício 53:</h1>
+    <p>Verificar se um número é par ou ímpar:
+        <br>
+       <br> - Se o número for par exiba o número com a cor verde, caso contrário exiba o número com
+        a cor vermelha.
+        </p>
+    <div class="input-group">
+      <label for="numero">Digite um número:</label>
+      <input type="number" id="numero">
+    </div>
+
+    <button onclick="verificarParOuImpar()">Verificar</button>
+
+    <!-- Resultado do número par ou ímpar -->
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    function verificarParOuImpar() {
+  // Obtém o número digitado pelo usuário
+  let numero = parseInt(document.getElementById("numero").value);
+
+  // Verifica se o número é par ou ímpar e atribui a classe correspondente
+  if (numero % 2 === 0) {
+    document.getElementById("resultado").innerHTML = `<span class="verde">O número ${numero} é par.</span>`;
+  } else {
+    document.getElementById("resultado").innerHTML = `<span class="vermelho">O número ${numero} é ímpar.</span>`;
+  }
+}
+
+  </script>
+</body>
+</html>

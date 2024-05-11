@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 60:</title>
+  <style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+  height: 55vh;
+  margin-top: 130px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 8px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+}
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .resultado {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Exercício 60:</h1>
+    <p>Crie uma aplicação que calcule e imprima a área e a hipotenusa de um triângulo
+        retângulo.
+        <br>Observação: Os valores devem ser positivos, caso contrário uma mensagem de erro deve
+        ser impressa para o usuário</p>
+    <form id="formulario">
+      <div class="input-group">
+        <label for="cateto1">Comprimento do Cateto 1:</label>
+        <input type="number" id="cateto1" name="cateto1">
+      </div>
+
+      <div class="input-group">
+        <label for="cateto2">Comprimento do Cateto 2:</label>
+        <input type="number" id="cateto2" name="cateto2">
+      </div>
+
+      <button type="button" onclick="calcularAreaEHipotenusa()">Calcular</button>
+    </form>
+
+    <!-- Resultado -->
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    function calcularAreaEHipotenusa() {
+  // Obtém os valores dos catetos digitados pelo usuário
+  let cateto1 = parseFloat(document.getElementById("cateto1").value);
+  let cateto2 = parseFloat(document.getElementById("cateto2").value);
+
+  // Verifica se os valores dos catetos são positivos
+  if (cateto1 <= 0 || cateto2 <= 0 || isNaN(cateto1) || isNaN(cateto2)) {
+    document.getElementById("resultado").innerHTML = "Os valores dos catetos devem ser positivos.";
+    return;
+  }
+
+  // Calcula a área do triângulo retângulo (cateto1 * cateto2 / 2)
+  let area = (cateto1 * cateto2) / 2;
+
+  // Calcula a hipotenusa do triângulo retângulo (raiz quadrada de (cateto1^2 + cateto2^2))
+  let hipotenusa = Math.sqrt(cateto1 ** 2 + cateto2 ** 2);
+
+  // Exibe o resultado da área e da hipotenusa
+  document.getElementById("resultado").innerHTML = `Área: ${area.toFixed(2)}<br>Hipotenusa: ${hipotenusa.toFixed(2)}`;
+}
+
+  </script>
+</body>
+</html>

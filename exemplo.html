@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initialscale=1.0">
+<title>Adicionar Classe com JavaScript</title>
+<style>
+ .destacado {
+ color: rgb(203, 22, 240);
+ }
+</style>
+</head>
+<body>
+<p id="meuParagrafo">Este parágrafo não está destacado.</p>
+<button id="meuBotao">Destacar Parágrafo</button>
+<script>
+ // Seleciona os elementos pelo ID
+ const meuParagrafo = document.getElementById('meuParagrafo');
+ const meuBotao = document.getElementById('meuBotao');
+function cor(){
+ // Adiciona a classe 'destacado' ao parágrafo
+ meuParagrafo.classList.add('destacado');
+}
+ // Adiciona um ouvinte de evento de clique ao botão
+ meuBotao.addEventListener('click', cor);
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 62</title>
+  <style>
+    /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+  height: 85vh;
+  margin-top: 30px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 8px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.resultado {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Exercício 62:</h1>
+    <p>Crie uma aplicação que receba um número qualquer positivo e maior que zero.
+        <br> <br>Se o valor do número for par o algoritmo deverá imprimir a seguinte mensagem:
+        <br><strong>o “O número digitado foi __.”
+        <br>o “Seu valor elevado ao quadrado é __.”
+        <br> o “Seu valor elevado ao cubo é __.”
+        <br>o “Seu valor elevado a sétima é __.”</strong>
+        <br> <br>Se o valor for ímpar o algoritmo deverá imprimir a seguinte mensagem:
+        <br><strong>o “O número digitado foi __.”
+        <br> o “Sua raiz quadrada é __.”
+        <br> o “Sua raiz cúbica é __.”</strong> 
+        <br> <br><strong> Observação: </strong>Se o usuário digitar um valor inválido o algoritmo deverá emitir uma
+        mensagem de erro. </p>
+
+    <form id="formulario">
+      <div class="input-group">
+        <label for="numero">Digite um número maior que zero:</label>
+        <input type="number" id="numero" name="numero" min="1">
+      </div>
+
+      <button type="button" onclick="realizarOperacoes()">Realizar Operações</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    // script.js
+function realizarOperacoes() {
+  let numero = parseInt(document.getElementById("numero").value);
+
+//is not a number = se nn é um número || ou se for menor que zero
+  if (isNaN(numero) || numero <= 0) {
+    document.getElementById("resultado").innerHTML = "O número deve ser maior que zero.";
+    return;
+  }
+
+//par
+  if (numero % 2 === 0) {
+    let quadrado = Math.pow(numero, 2);
+    let cubo = Math.pow(numero, 3);
+    let sétima = Math.pow(numero, 7);
+
+    document.getElementById("resultado").innerHTML = `
+      O número digitado foi ${numero}.<br>
+      Seu valor elevado ao quadrado é ${quadrado}.<br>
+      Seu valor elevado ao cubo é ${cubo}.<br>
+      Seu valor elevado a sétima é ${sétima}.
+    `;
+    //impar
+  } else {
+    let raizQuadrada = Math.sqrt(numero);
+    let raizCúbica = Math.cbrt(numero);
+    let raizSétima = Math.pow(numero, 1/7);
+
+    document.getElementById("resultado").innerHTML = `
+      O número digitado foi ${numero}.<br>
+      Sua raiz quadrada é ${raizQuadrada.toFixed(2)}.<br>
+      Sua raiz cúbica é ${raizCúbica.toFixed(2)}.<br>
+      Sua raiz a sétima é ${raizSétima.toFixed(2)}.
+    `;  
+  }
+}
+  </script>
+</body>
+</html>

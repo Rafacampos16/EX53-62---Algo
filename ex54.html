@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 54</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+  height: 70vh;
+  margin-top: 90px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 8px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.resultado {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.resultado .azul {
+  color: blue;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Exercício 54:</h1>
+    <p>Comparar dois números e destacar o maior:
+        <br><br>- Crie uma aplicação que receba dois números e exiba o maior número na cor azul. A
+        saída deve se dar da seguinte maneira:
+        <br> <br>Os números digitados foram ... e ....
+        <br>O maior número é .... (em azul aqui e somente o número)</p>
+    <div class="input-group">
+      <label for="numero1">Digite o primeiro número:</label>
+      <input type="number" id="numero1">
+    </div>
+
+    <div class="input-group">
+      <label for="numero2">Digite o segundo número:</label>
+      <input type="number" id="numero2">
+    </div>
+
+    <button onclick="compararNumeros()">Comparar</button>
+
+    <!-- Resultado da comparação de números -->
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    function compararNumeros() {
+  // Obtém os números digitados pelo usuário
+  let numero1 = parseFloat(document.getElementById("numero1").value);
+  let numero2 = parseFloat(document.getElementById("numero2").value);
+
+  // Verifica qual número é maior
+  let maiorNumero;
+  if (numero1 > numero2) {
+    maiorNumero = numero1;
+  } else {
+    maiorNumero = numero2;
+  }
+
+  // Exibe os números digitados e destaca o maior número em azul
+  let resultadoElement = document.getElementById("resultado");
+  resultadoElement.innerHTML = `Os números digitados foram ${numero1} e ${numero2}.<br>`;
+  resultadoElement.innerHTML += `O maior número é <span class="azul">${maiorNumero}</span>.`;
+}
+
+  </script>
+</body>
+</html>
